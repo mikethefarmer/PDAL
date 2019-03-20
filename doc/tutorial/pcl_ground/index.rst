@@ -61,10 +61,10 @@ The resulting filtered cloud can be seen in this top-down and front view. When
 viewed from the side, it is apparent that there are a number of low noise
 points that have fooled the PMF filter.
 
-.. image:: after-top1.png
+.. image:: csite-pmf-default.png
    :height: 400px
 
-.. image:: after-front1.png
+.. image:: csite-pmf-front.png
    :height: 400px
 
 
@@ -72,10 +72,10 @@ To address, we introduce an alternate way to call PMF
 
 The result is noticeably cleaner in both the top-down and front views.
 
-.. image:: after-top2.png
+.. image:: csite-pmf-denoise.png
    :height: 400px
 
-.. image:: after-front2.png
+.. image:: csite-denoised-front.png
    :height: 400px
 
 Unfortunately, you may notice that we still have a rather large building in the
