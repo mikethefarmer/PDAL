@@ -22,11 +22,43 @@ SMRF [Pingel2013]_.
 
 filters.smrf :ref:`smrf <filters.smrf>`
 
+::
+
+    $ pdal translate -i CSite1_orig-utm.laz \
+        -o CSite1_orig-utm.smrf.laz \
+        --json /path/to/pipeline.json
+
+::
+
+    $ pdal translate -i CSite1_orig-utm.laz \
+        -o CSite1_orig-utm.smrf.laz \
+        smrf range \
+        --filters.range.limits="Classification[2:2]"
+
+.. literalinclude:: smrf-range.json
+
 .. image:: csite-smrf-default.png
    :height: 400px
 
+::
+
+    $ pdal translate -i CSite1_orig-utm.laz \
+        -o CSite1_orig-utm.denoised-smrf.laz \
+        outlier smrf range \
+        --filters.range.limits="Classification[2:2]" \
+        --filters.smrf.ignore="Classification[7:7]"
+
 .. image:: csite-smrf-denoise.png
    :height: 400px
+
+::
+
+    pdal translate -i CSite1_orig-utm.laz \
+        -o ~/Temp/smrf-denoise-cut20.laz \
+        outlier smrf range \
+        --filters.range.limits="Classification[2:2]" \
+        --filters.smrf.ignore="Classification[7:7]" \
+        --filters.smrf.cut=20
 
 .. image:: csite-smrf-cut.png
    :height: 400px
@@ -38,6 +70,12 @@ Progressive Morphological Filter
 PMF [Zhang2003]_.
 
 filters.pmf :ref:`pmf <filters.pmf>`
+
+pdal ground -i ~/Data/bare_earth_eval/isprs/converted/laz/CSite1_orig-utm.laz -o ~/Temp/ground-kernel-defaults.laz -v4
+pdal ground -i ~/Data/bare_earth_eval/isprs/converted/laz/CSite1_orig-utm.laz -o ~/Temp/ground-kernel-defaults.laz --verbose 4
+pdal ground -i ~/Data/bare_earth_eval/isprs/converted/laz/CSite1_orig-utm.laz -o ~/Temp/ground-kernel-defaults.laz --extract --verbose 4
+pdal ground -i ~/Data/bare_earth_eval/isprs/converted/laz/CSite1_orig-utm.laz -o ~/Temp/ground-kernel-denoise.laz --extract --denoise --verbose 4
+pdal ground -i ~/Data/bare_earth_eval/isprs/converted/laz/CSite1_orig-utm.laz -o ~/Temp/ground-kernel-denoise-cell.laz --extract --denoise --cell_size=1.5 --verbose 4
 
 A complete description of the algorithm can be found in the article `"A
 Progressive Morphological Filter for Removing Nonground Measurements from
