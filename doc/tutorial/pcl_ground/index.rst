@@ -22,43 +22,25 @@ SMRF [Pingel2013]_.
 
 filters.smrf :ref:`smrf <filters.smrf>`
 
+In each of the examples in this section, we will call the following ``pdal translate`` command. Simply create the ``pipeline.json`` according to each example and update the path as necessary.
+
 ::
 
-    $ pdal translate -i CSite1_orig-utm.laz \
-        -o CSite1_orig-utm.smrf.laz \
+    $ pdal translate -i /path/to/CSite1_orig-utm.laz \
+        -o /path/to/output.laz \
         --json /path/to/pipeline.json
-
-::
-
-    $ pdal translate -i CSite1_orig-utm.laz \
-        -o CSite1_orig-utm.smrf.laz \
-        smrf range \
-        --filters.range.limits="Classification[2:2]"
 
 .. literalinclude:: smrf-range.json
 
 .. image:: csite-smrf-default.png
    :height: 400px
 
-::
-
-    $ pdal translate -i CSite1_orig-utm.laz \
-        -o CSite1_orig-utm.denoised-smrf.laz \
-        outlier smrf range \
-        --filters.range.limits="Classification[2:2]" \
-        --filters.smrf.ignore="Classification[7:7]"
+.. literalinclude:: outlier-smrf-range.json
 
 .. image:: csite-smrf-denoise.png
    :height: 400px
 
-::
-
-    pdal translate -i CSite1_orig-utm.laz \
-        -o ~/Temp/smrf-denoise-cut20.laz \
-        outlier smrf range \
-        --filters.range.limits="Classification[2:2]" \
-        --filters.smrf.ignore="Classification[7:7]" \
-        --filters.smrf.cut=20
+.. literalinclude:: outlier-smrf-range-cut.json
 
 .. image:: csite-smrf-cut.png
    :height: 400px
