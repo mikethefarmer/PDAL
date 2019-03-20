@@ -18,16 +18,31 @@ it to disk.
 Simple Morphological Filter
 ------------------------------------------------------------------------------
 
+SMRF [Pingel2013]_.
+
+filters.smrf :ref:`smrf <filters.smrf>`
+
+.. image:: csite-smrf-default.png
+   :height: 400px
+
+.. image:: csite-smrf-denoise.png
+   :height: 400px
+
+.. image:: csite-smrf-cut.png
+   :height: 400px
+
+
 Progressive Morphological Filter
 ------------------------------------------------------------------------------
+
+PMF [Zhang2003]_.
+
+filters.pmf :ref:`pmf <filters.pmf>`
 
 A complete description of the algorithm can be found in the article `"A
 Progressive Morphological Filter for Removing Nonground Measurements from
 Airborne LIDAR Data" <http://users.cis.fiu.edu/~chens/PDF/TGRS.pdf>`_ by K.
 Zhang, S. Chen, D. Whitman, M. Shyu, J. Yan, and C. Zhang.
-
-For more information on how to invoke this PCL-based filter programmatically,
-see the `ProgressiveMorphologicalFilter`_ tutorial on the PCL website.
 
 We have chosen to demonstrate the algorithm using data from the 2003 report
 "ISPRS Comparison of Filters." For more on the data and the study itself,
@@ -87,16 +102,3 @@ Once again, the result is noticeably cleaner.
 .. image:: csite-pmf-cellsize.png
    :height: 400px
 
-.. image:: csite-smrf-default.png
-   :height: 400px
-
-.. image:: csite-smrf-denoise.png
-   :height: 400px
-
-.. image:: csite-smrf-cut.png
-   :height: 400px
-
-
-
-
-.. _`ProgressiveMorphologicalFilter`: http://pointclouds.org/documentation/tutorials/progressive_morphological_filtering.php
