@@ -18,11 +18,13 @@ it to disk.
 Simple Morphological Filter
 ------------------------------------------------------------------------------
 
-SMRF [Pingel2013]_.
+The Simple Morphological Filter (SMRF) is one of two ground filters available
+via PDAL [Pingel2013]_. SMRF options can be found in the :ref:`<filters.smrf>`
+documentation.
 
-filters.smrf :ref:`smrf <filters.smrf>`
-
-In each of the examples in this section, we will call the following ``pdal translate`` command. Simply create the ``pipeline.json`` according to each example and update the path as necessary.
+In each of the examples in this section, we will call the following ``pdal
+translate`` command. Simply create the ``pipeline.json`` according to each
+example and update the path as necessary.
 
 ::
 
@@ -30,17 +32,45 @@ In each of the examples in this section, we will call the following ``pdal trans
         -o /path/to/output.laz \
         --json /path/to/pipeline.json
 
+The first example uses all default options for SMRF, with no preprocessing. The
+only additional filter used in the pipeline is a :ref:`<filters.range>` stage.
+This is not required, but is included to crop only returns classified as ground
+for visualization purposes.
+
 .. literalinclude:: smrf-range.json
+
+The output is shown below.
 
 .. image:: csite-smrf-default.png
    :height: 400px
 
+When viewed from the side, it is apparent that there are a number of low noise
+points that can negatively impact many ground segmentation approaches.
+
+.. image:: csite-pmf-front.png
+   :height: 400px
+
+We can insert the :ref:`<filters.outlier>` stage before SMRF to mark noise
+points with a Classificaiton value of 7 (:ref:`<filters.elm>` should do a
+reasonable job in this instance too). SMRF can then be told to ignore all
+points with a Classification of 7.
+
 .. literalinclude:: outlier-smrf-range.json
+
+The result is shown below.
 
 .. image:: csite-smrf-denoise.png
    :height: 400px
 
+Finally, large buildings can be problematic with many ground segmentation
+methods. One tool that SMRF provides to combat this is the ``cut`` parameter.
+We set ``cut`` to 20 to see if we can improve the segmentation (perhaps most
+notably the large structure in the lower right corner).
+
 .. literalinclude:: outlier-smrf-range-cut.json
+
+The updated run successfully removes the large building (at the expense of
+terrain at the top of the hill!).
 
 .. image:: csite-smrf-cut.png
    :height: 400px
@@ -92,16 +122,10 @@ remaining ground points.
 
     $ pdal ground -i CSite1_orig-utm.laz -o CSite1_orig-utm-ground.laz -v4
     
-The resulting filtered cloud can be seen in this top-down and front view. When
-viewed from the side, it is apparent that there are a number of low noise
-points that have fooled the PMF filter.
+The resulting filtered cloud can be seen below.
 
 .. image:: csite-pmf-default.png
    :height: 400px
-
-.. image:: csite-pmf-front.png
-   :height: 400px
-
 
 To address, we introduce an alternate way to call PMF
 
