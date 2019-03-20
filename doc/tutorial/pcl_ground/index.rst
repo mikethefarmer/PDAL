@@ -87,4 +87,16 @@ Once again, the result is noticeably cleaner.
 .. image:: csite-pmf-cellsize.png
    :height: 400px
 
+.. image:: csite-smrf-default.png
+   :height: 400px
+
+.. image:: csite-smrf-denoise.png
+   :height: 400px
+
+.. image:: csite-smrf-cut.png
+   :height: 400px
+
+
+
+
 .. _`ProgressiveMorphologicalFilter`: http://pointclouds.org/documentation/tutorials/progressive_morphological_filtering.php
