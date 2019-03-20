@@ -82,12 +82,9 @@ Unfortunately, you may notice that we still have a rather large building in the
 lower right of the image. By tweaking the parameters slightly, in this case,
 increasing the cell size, we can do a better job of removing such features.
 
-Once again, the result is noticeably cleaner in both the top-down and front views.
+Once again, the result is noticeably cleaner.
 
-.. image:: after-top3.png
-   :height: 400px
-
-.. image:: after-front3.png
+.. image:: csite-pmf-cellsize.png
    :height: 400px
 
 .. _`ProgressiveMorphologicalFilter`: http://pointclouds.org/documentation/tutorials/progressive_morphological_filtering.php
