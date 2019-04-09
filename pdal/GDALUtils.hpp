@@ -485,7 +485,7 @@ private:
             int partialRowElts = m_xBlockSize * x;
 
             auto si = sourceBegin + (wholeRowElts + partialRowElts);
-            std::transform(si, si + m_xBlockSize, di,
+            std::transform(si, si + xWidth, di,
                 [srcNoData, dstNoData](ITER_VAL<SOURCE_ITER> s){
                     T t;
 
