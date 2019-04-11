@@ -481,8 +481,8 @@ private:
         for (int row = 0; row < yHeight; ++row)
         {
             // Find the offset location in the source container.
-            int wholeRowElts = m_xTotalSize * ((y * m_yBlockSize) + row);
-            int partialRowElts = m_xBlockSize * x;
+            long wholeRowElts = (long)m_xTotalSize * ((y * m_yBlockSize) + row);
+            long partialRowElts = (long)m_xBlockSize * x;
 
             auto si = sourceBegin + (wholeRowElts + partialRowElts);
             std::transform(si, si + xWidth, di,
